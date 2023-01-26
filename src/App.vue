@@ -4,4 +4,8 @@
 
 <script setup lang="ts"></script>
 
-<style></style>
+<style>
+.app {
+  color: yellow;
+}
+</style>
