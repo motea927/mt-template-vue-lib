@@ -1,4 +1,3 @@
-import type { App as AppType } from 'vue'
 import App from './App.vue'
 
 const isDev = import.meta.env.MODE === 'development'
@@ -9,8 +8,4 @@ if (isDev) {
   createApp(PlayGroundApp).mount('#app')
 }
 
-export default {
-  install(app: AppType) {
-    app.component('MtFocus', App)
-  },
-}
+export { App }
