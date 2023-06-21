@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "mt-template-vue-lib-core": "file:../../packages/core"
+  }
+}
+
