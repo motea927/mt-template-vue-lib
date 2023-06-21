@@ -87,14 +87,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run build
-      - name: Cache dist
+        run: pnpm run build:core
+      - name: Cache packages/core dist
         uses: actions/cache@v3
         with:
-          path: dist
+          path: packages/core/dist
           key: ${{ github.sha }}
 
-  # build-release:
+  # release-core:
   #   if: |
   #     github.event_name == 'push' &&
   #     !contains(github.event.head_commit.message, 'chore') &&
@@ -126,10 +126,10 @@ jobs:
   #     - name: Restore dist cache
   #       uses: actions/cache@v3
   #       with:
-  #         path: dist
+  #         path: packages/core/dist
   #         key: ${{ github.sha }}
   #     - name: Release
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #       run: pnpm run test:unit
+  #       run: pnpm run release
