@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "run-p type-check build-only",
     "build-only": "vite build",
-    "build:watch": "pnpm run build-only --watch & pnpm run dev",
+    "build:watch": "pnpm run build-only --watch",
     "type-check": "vue-tsc --noEmit -p ../../tsconfig.vitest.json --composite false"
   },
   "author": "Morty Li <https://github.com/motea927>",
@@ -20,16 +20,19 @@
   "keywords": [
     "vue"
   ],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "require": "./index.cjs",
-      "import": "./index.mjs"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     },
-    "./*": "./*"
+    "./*": "./dist/*"
   },
-  "main": "./index.cjs",
-  "module": "./index.mjs",
-  "types": "./index.d.ts"
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts"
 }
