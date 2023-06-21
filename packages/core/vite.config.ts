@@ -11,10 +11,9 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
-      include: ['/packages/core/*.ts'],
-      insertTypesEntry: true,
-      copyDtsFiles: false,
-      tsConfigFilePath: '../../tsconfig.app.json'
+      include: ['**/*.ts'],
+      exclude: ['dist/**'],
+      tsConfigFilePath: fileURLToPath(new URL('../../tsconfig.app.json', import.meta.url))
     })
   ],
   resolve: {
