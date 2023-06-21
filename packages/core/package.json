@@ -1,0 +1,35 @@
+{
+  "name": "mt-template-vue-lib-core",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "build-only": "vite build",
+    "build:watch": "pnpm run build-only --watch & pnpm run dev",
+    "type-check": "vue-tsc --noEmit -p ../../tsconfig.vitest.json --composite false"
+  },
+  "author": "Morty Li <https://github.com/motea927>",
+  "license": "MIT",
+  "homepage": "https://github.com/motea927/mt-template-vue-lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motea927/mt-template-vue-lib.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts"
+}
