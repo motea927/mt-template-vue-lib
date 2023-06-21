@@ -79,8 +79,8 @@ importers:
   playgrounds/vite-vue3:
     dependencies:
       mt-template-vue-lib-core:
-        specifier: file:../../packages/core
-        version: file:packages/core
+        specifier: workspace:*
+        version: link:../../packages/core
 
 packages:
 
@@ -5505,9 +5505,3 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
-
-  file:packages/core:
-    resolution: {directory: packages/core, type: directory}
-    name: mt-template-vue-lib-core
-    version: 0.0.0
-    dev: false

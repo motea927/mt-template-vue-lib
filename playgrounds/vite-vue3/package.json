@@ -3,7 +3,6 @@
     "dev": "vite"
   },
   "dependencies": {
-    "mt-template-vue-lib-core": "file:../../packages/core"
+    "mt-template-vue-lib-core": "workspace:*"
   }
 }
-
