@@ -94,42 +94,42 @@ jobs:
           path: dist
           key: ${{ github.sha }}
 
-  build-release:
-    if: |
-      github.event_name == 'push' &&
-      !contains(github.event.head_commit.message, 'chore') &&
-      !contains(github.event.head_commit.message, 'docs')
-    needs:
-      - build
-    runs-on: ${{ matrix.os }}
+  # build-release:
+  #   if: |
+  #     github.event_name == 'push' &&
+  #     !contains(github.event.head_commit.message, 'chore') &&
+  #     !contains(github.event.head_commit.message, 'docs')
+  #   needs:
+  #     - build
+  #   runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        os: [ubuntu-20.04]
-        node: [18]
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-20.04]
+  #       node: [18]
 
-    timeout-minutes: 20
-    environment: release
+  #   timeout-minutes: 20
+  #   environment: release
 
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Restore dist cache
-        uses: actions/cache@v3
-        with:
-          path: dist
-          key: ${{ github.sha }}
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --branches main
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+  #     - name: Use Node.js ${{ matrix.node }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node }}
+  #         cache: 'pnpm'
+  #     - name: Install dependencies
+  #       run: pnpm install
+  #     - name: Restore dist cache
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: dist
+  #         key: ${{ github.sha }}
+  #     - name: Release
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #       run: npx semantic-release --branches main
